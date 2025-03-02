@@ -1,6 +1,8 @@
 package com.felipe.arka.checkout.service.implementation;
 
 import com.felipe.arka.checkout.dtos.responseDTOs.CartResponseDTO;
+import com.felipe.arka.checkout.entities.Cart;
+import com.felipe.arka.checkout.mappers.CartMapper;
 import com.felipe.arka.checkout.repositories.CartRepository;
 import com.felipe.arka.checkout.service.CartService;
 import lombok.RequiredArgsConstructor;
@@ -13,15 +15,18 @@ import java.util.List;
 public class CartServiceImpl implements CartService {
 
   private final CartRepository cartRepository;
+  private final CartMapper cartMapper;
 
   @Override
   public List<CartResponseDTO> getAbandonedCarts() {
-    return List.of();
+    List<Cart> carts = cartRepository.findAll();
+    return cartMapper.cartsToCartResponseDTOs(carts);
   }
 
   @Override
   public CartResponseDTO createCart(Long userId) {
-    return null;
+    Cart cart = new Cart();
+
   }
 
   @Override
