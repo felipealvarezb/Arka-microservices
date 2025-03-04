@@ -1,5 +1,6 @@
 package com.felipe.arka.checkout.entities;
 
+import com.felipe.arka.checkout.dtos.ProductDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class OrderDetail {
 
   @ManyToOne
   @JoinColumn(name = "product_id", nullable = false)
-  //private Product product;
+  private ProductDTO product;
 
   @Temporal(TemporalType.TIMESTAMP)
   @CreationTimestamp
